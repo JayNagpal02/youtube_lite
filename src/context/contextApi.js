@@ -11,17 +11,17 @@ export const AppContext = (props) => {
     const [mobileMenu, setMobileMenu] = useState(false);
 
     useEffect(() => {
-        fetchSelectCategoryData(selectCategories)
+        fetchSelectCategoryData(selectCategories);
     }, [selectCategories]);
 
     const fetchSelectCategoryData = (query) => {
-        setLoading(true)
+        setLoading(true);
         fetchDataFromApi(`search/?q=${query}`).then(({ contents }) => {
-            console.log(contents)
-            setSearchResults(contents)
-            setLoading(false)
-        })
-    }
+            console.log(contents);
+            setSearchResults(contents);
+            setLoading(false);
+        });
+    };
 
     return (
         <Context.Provider
@@ -33,8 +33,9 @@ export const AppContext = (props) => {
                 selectCategories,
                 setSelectCategories,
                 mobileMenu,
-                setMobileMenu
-            }}>
+                setMobileMenu,
+            }}
+        >
             {props.children}
         </Context.Provider>
     );
